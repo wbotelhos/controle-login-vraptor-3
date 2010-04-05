@@ -6,7 +6,7 @@ import br.com.caelum.vraptor.Resource;
 
 /**
  * @author Washington Botelho dos Santos
- * @artigo http://wbotelhos.wordpress.com/2010/04/05/controle-de-login-com-vraptor-3
+ * @artigo http://wbotelhos.wordpress.com/2010/04/06/controle-de-login-com-vraptor-3
  */
 
 @Resource
