@@ -8,6 +8,6 @@
 		<title>http://wbotelhos.wordpress.com</title>
 	</head>
 	<body>
-		Olá, ${sessionScope.currentUser.nome} <a href="<c:url value='/logout'/>">Logout</a>
+		Olá, ${sessionUser.usuario.nome} <a href="<c:url value='/logout'/>">Logout</a>
 	</body>
 </html>
