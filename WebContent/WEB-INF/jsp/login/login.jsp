@@ -5,7 +5,7 @@
 
 <html>
 	<head>
-		<title>http://wbotelhos.wordpress.com</title>
+		<title>http://wbotelhos.com</title>
 	</head>
 	<body>
 		<form action="<c:url value='/login'/>" method="post">

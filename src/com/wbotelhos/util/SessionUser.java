@@ -1,13 +1,13 @@
-package com.wordpress.wbotelhos.util;
+package com.wbotelhos.util;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.SessionScoped;
 
-import com.wordpress.wbotelhos.model.Usuario;
+import com.wbotelhos.model.Usuario;
 
 /**
  * @author Washington Botelho dos Santos
- * @artigo http://wbotelhos.wordpress.com/2010/04/07/controle-de-login-com-vraptor-3
+ * @artigo http://wbotelhos.com/2010/04/07/controle-de-login-com-vraptor-3
  */
 
 @Component

@@ -1,4 +1,4 @@
-package com.wordpress.wbotelhos.dao;
+package com.wbotelhos.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -7,11 +7,11 @@ import javax.persistence.Query;
 
 import br.com.caelum.vraptor.ioc.Component;
 
-import com.wordpress.wbotelhos.model.Usuario;
+import com.wbotelhos.model.Usuario;
 
 /**
  * @author Washington Botelho dos Santos
- * @artigo http://wbotelhos.wordpress.com/2010/04/07/controle-de-login-com-vraptor-3
+ * @artigo http://wbotelhos.com/2010/04/07/controle-de-login-com-vraptor-3
  */
 
 @Component

@@ -1,4 +1,4 @@
-package com.wordpress.wbotelhos.interceptor;
+package com.wbotelhos.interceptor;
 
 import static br.com.caelum.vraptor.view.Results.logic;
 
@@ -10,12 +10,12 @@ import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 
-import com.wordpress.wbotelhos.controller.LoginController;
-import com.wordpress.wbotelhos.util.SessionUser;
+import com.wbotelhos.controller.LoginController;
+import com.wbotelhos.util.SessionUser;
 
 /**
  * @author Washington Botelho dos Santos
- * @artigo http://wbotelhos.wordpress.com/2010/04/07/controle-de-login-com-vraptor-3
+ * @artigo http://wbotelhos.com/2010/04/07/controle-de-login-com-vraptor-3
  */
 
 @Intercepts

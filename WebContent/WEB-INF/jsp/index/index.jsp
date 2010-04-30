@@ -5,7 +5,7 @@
 
 <html>
 	<head>
-		<title>http://wbotelhos.wordpress.com</title>
+		<title>http://wbotelhos.com</title>
 	</head>
 	<body>
 		Olá, ${sessionUser.usuario.nome} <a href="<c:url value='/logout'/>">Logout</a>
