@@ -1,7 +1,5 @@
 package br.com.wbotelhos.interceptor;
 
-import static br.com.caelum.vraptor.view.Results.logic;
-
 import java.util.Arrays;
 
 import br.com.caelum.vraptor.Intercepts;
@@ -39,7 +37,7 @@ public class LoginInterceptor implements Interceptor {
 		if (userSession.getUsuario() != null) {
 			stack.next(method, resourceInstance);
 		} else {
-			result.use(logic()).redirectTo(LoginController.class).login();
+			result.redirectTo(LoginController.class).login();
 		}
 	}
 
