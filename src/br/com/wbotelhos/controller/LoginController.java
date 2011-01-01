@@ -8,7 +8,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.wbotelhos.dao.UsuarioDao;
 import br.com.wbotelhos.model.Usuario;
-import br.com.wbotelhos.util.SessionUser;
+import br.com.wbotelhos.util.UserSession;
 
 /**
  * @author Washington Botelho
@@ -20,12 +20,12 @@ public class LoginController {
 
 	private Result result;
 	private UsuarioDao usuarioDao;
-	private SessionUser sessionUser;
+	private UserSession userSession;
 
-	public LoginController(Result result, UsuarioDao usuarioDao, SessionUser sessionUser) {
+	public LoginController(Result result, UsuarioDao usuarioDao, UserSession userSession) {
 		this.result = result;
 		this.usuarioDao = usuarioDao;
-		this.sessionUser = sessionUser;
+		this.userSession = userSession;
 	}
 
 	@Get
@@ -39,7 +39,7 @@ public class LoginController {
 		try {
 			Usuario user = usuarioDao.login(usuario.getEmail(), usuario.getSenha());
 
-			sessionUser.setUsuario(user);
+			userSession.setUsuario(user);
 
 			result.use(logic()).redirectTo(IndexController.class).index();
 		} catch (Exception e) {
@@ -51,7 +51,7 @@ public class LoginController {
 	@Get
 	@Path("/logout")
 	public void logout() {
-		sessionUser.setUsuario(null);
+		userSession.setUsuario(null);
 		result.use(logic()).redirectTo(getClass()).login();
 	}
 

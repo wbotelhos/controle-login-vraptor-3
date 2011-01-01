@@ -11,7 +11,7 @@ import br.com.wbotelhos.model.Usuario;
 
 @Component
 @SessionScoped
-public class SessionUser {
+public class UserSession {
 
 	private Usuario usuario;
 

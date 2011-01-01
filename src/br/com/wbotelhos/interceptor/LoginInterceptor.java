@@ -10,7 +10,7 @@ import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 import br.com.wbotelhos.controller.LoginController;
-import br.com.wbotelhos.util.SessionUser;
+import br.com.wbotelhos.util.UserSession;
 
 /**
  * @author Washington Botelho
@@ -21,11 +21,11 @@ import br.com.wbotelhos.util.SessionUser;
 public class LoginInterceptor implements Interceptor {
 
 	private Result result;
-	private SessionUser sessionUser;
+	private UserSession userSession;
 
-	public LoginInterceptor(Result result, SessionUser sessionUser) {
+	public LoginInterceptor(Result result, UserSession userSession) {
 		this.result = result;
-		this.sessionUser = sessionUser;
+		this.userSession = userSession;
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class LoginInterceptor implements Interceptor {
 
 	@Override
 	public void intercept(InterceptorStack stack, ResourceMethod method, Object resourceInstance) {
-		if (sessionUser.getUsuario() != null) {
+		if (userSession.getUsuario() != null) {
 			stack.next(method, resourceInstance);
 		} else {
 			result.use(logic()).redirectTo(LoginController.class).login();
