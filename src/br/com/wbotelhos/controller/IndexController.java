@@ -1,4 +1,4 @@
-package com.wbotelhos.controller;
+package br.com.wbotelhos.controller;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;

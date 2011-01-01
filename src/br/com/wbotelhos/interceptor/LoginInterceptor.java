@@ -1,4 +1,4 @@
-package com.wbotelhos.interceptor;
+package br.com.wbotelhos.interceptor;
 
 import static br.com.caelum.vraptor.view.Results.logic;
 
@@ -9,9 +9,8 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.resource.ResourceMethod;
-
-import com.wbotelhos.controller.LoginController;
-import com.wbotelhos.util.SessionUser;
+import br.com.wbotelhos.controller.LoginController;
+import br.com.wbotelhos.util.SessionUser;
 
 /**
  * @author Washington Botelho

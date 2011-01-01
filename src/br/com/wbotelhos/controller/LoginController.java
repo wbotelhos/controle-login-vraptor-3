@@ -1,4 +1,4 @@
-package com.wbotelhos.controller;
+package br.com.wbotelhos.controller;
 
 import static br.com.caelum.vraptor.view.Results.logic;
 import br.com.caelum.vraptor.Get;
@@ -6,10 +6,9 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-
-import com.wbotelhos.dao.UsuarioDao;
-import com.wbotelhos.model.Usuario;
-import com.wbotelhos.util.SessionUser;
+import br.com.wbotelhos.dao.UsuarioDao;
+import br.com.wbotelhos.model.Usuario;
+import br.com.wbotelhos.util.SessionUser;
 
 /**
  * @author Washington Botelho

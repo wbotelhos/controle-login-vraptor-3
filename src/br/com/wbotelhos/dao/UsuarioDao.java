@@ -1,4 +1,4 @@
-package com.wbotelhos.dao;
+package br.com.wbotelhos.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -6,8 +6,7 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
 import br.com.caelum.vraptor.ioc.Component;
-
-import com.wbotelhos.model.Usuario;
+import br.com.wbotelhos.model.Usuario;
 
 /**
  * @author Washington Botelho

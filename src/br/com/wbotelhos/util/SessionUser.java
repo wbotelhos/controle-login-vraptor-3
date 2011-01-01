@@ -1,9 +1,8 @@
-package com.wbotelhos.util;
+package br.com.wbotelhos.util;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.SessionScoped;
-
-import com.wbotelhos.model.Usuario;
+import br.com.wbotelhos.model.Usuario;
 
 /**
  * @author Washington Botelho
