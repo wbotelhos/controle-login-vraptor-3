@@ -1,6 +1,5 @@
 package br.com.wbotelhos.controller;
 
-import static br.com.caelum.vraptor.view.Results.logic;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -41,10 +40,10 @@ public class LoginController {
 
 			userSession.setUsuario(user);
 
-			result.use(logic()).redirectTo(IndexController.class).index();
+			result.redirectTo(IndexController.class).index();
 		} catch (Exception e) {
 			e.printStackTrace();
-			result.use(logic()).redirectTo(getClass()).login();
+			result.forwardTo(this).login();
 		}
 	}
 
@@ -52,7 +51,7 @@ public class LoginController {
 	@Path("/logout")
 	public void logout() {
 		userSession.setUsuario(null);
-		result.use(logic()).redirectTo(getClass()).login();
+		result.redirectTo(this).login();
 	}
 
 }
