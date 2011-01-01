@@ -24,16 +24,16 @@ public class UsuarioDao {
 
 	public Usuario login(String email, String senha) throws Exception {
 		try {
-			Query query = manager.createQuery("from Usuario u where u.email = :email and u.senha = :senha");
+			Query query = manager.createQuery("from Usuario where email = :email and senha = :senha");
 			query.setParameter("email", email);
 			query.setParameter("senha", senha);
 			return (Usuario) query.getSingleResult();
 		} catch (NoResultException e) {
-			throw new Exception("Usu�rio ou senha incorreta!", e);
+			throw new Exception("Usuário ou senha incorreta!", e);
 		} catch (NonUniqueResultException e) {
-			throw new Exception("Erro! Usu�rio duplicado.", e);
+			throw new Exception("Erro! Usuário duplicado.", e);
 		} catch (Exception e) {
-			throw new Exception("N�o foi poss�vel acessar o sistema!", e);
+			throw new Exception("Não foi possóvel acessar o sistema!", e);
 		}
 	}
 
