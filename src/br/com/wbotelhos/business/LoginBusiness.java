@@ -1,8 +1,7 @@
-package br.com.wbotelhos.dao;
+package br.com.wbotelhos.business;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
 import br.com.caelum.vraptor.ioc.Component;
@@ -10,30 +9,26 @@ import br.com.wbotelhos.model.Usuario;
 
 /**
  * @author Washington Botelho
- * @artigo http://wbotelhos.com.br/2010/04/07/controle-de-login-com-vraptor-3
+ * @article http://wbotelhos.com.br/2010/04/07/controle-de-login-com-vraptor-3
  */
 
 @Component
-public class UsuarioDao {
+public class LoginBusiness {
 
 	private EntityManager manager;
 
-	public UsuarioDao(EntityManager manager) {
+	public LoginBusiness(EntityManager manager) {
 		this.manager = manager;
 	}
 
-	public Usuario login(String email, String senha) throws Exception {
+	public Usuario autenticar(String email, String senha) {
 		try {
 			Query query = manager.createQuery("from Usuario where email = :email and senha = :senha");
 			query.setParameter("email", email);
 			query.setParameter("senha", senha);
 			return (Usuario) query.getSingleResult();
 		} catch (NoResultException e) {
-			throw new Exception("Usuário ou senha incorreta!", e);
-		} catch (NonUniqueResultException e) {
-			throw new Exception("Erro! Usuário duplicado.", e);
-		} catch (Exception e) {
-			throw new Exception("Não foi possóvel acessar o sistema!", e);
+			return null;
 		}
 	}
 
