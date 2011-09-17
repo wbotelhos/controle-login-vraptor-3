@@ -1,5 +1,7 @@
 package br.com.wbotelhos.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,13 +9,13 @@ import javax.persistence.Id;
 
 /**
  * @author Washington Botelho
- * @artigo http://wbotelhos.com.br/2010/04/07/controle-de-login-com-vraptor-3
+ * @article http://wbotelhos.com.br/2010/04/07/controle-de-login-com-vraptor-3
  */
 
 @Entity
-public class Usuario implements java.io.Serializable {
+public class Usuario implements Serializable {
 
-	private static final long serialVersionUID = -8298771244275537894L;
+	private static final long serialVersionUID = 112412139296344543L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
