@@ -1,56 +1,55 @@
 package br.com.wbotelhos.controller;
 
 import br.com.caelum.vraptor.Get;
-import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.wbotelhos.dao.UsuarioDao;
+import br.com.wbotelhos.annotation.Public;
+import br.com.wbotelhos.business.LoginBusiness;
+import br.com.wbotelhos.component.UserSession;
 import br.com.wbotelhos.model.Usuario;
-import br.com.wbotelhos.util.UserSession;
 
 /**
  * @author Washington Botelho
- * @artigo http://wbotelhos.com.br/2010/04/07/controle-de-login-com-vraptor-3
+ * @article http://wbotelhos.com.br/2010/04/07/controle-de-login-com-vraptor-3
  */
 
 @Resource
 public class LoginController {
 
 	private Result result;
-	private UsuarioDao usuarioDao;
 	private UserSession userSession;
+	private LoginBusiness business;
 
-	public LoginController(Result result, UsuarioDao usuarioDao, UserSession userSession) {
+	public LoginController(Result result, UserSession userSession, LoginBusiness business) {
 		this.result = result;
-		this.usuarioDao = usuarioDao;
 		this.userSession = userSession;
+		this.business = business;
 	}
 
-	@Get
-	@Path("/login")
+	@Public
+	@Get("/login")
 	public void login() {
+
 	}
 
-	@Post
-	@Path("/login")
-	public void login(Usuario usuario) {
-		try {
-			Usuario user = usuarioDao.login(usuario.getEmail(), usuario.getSenha());
+	@Public
+	@Post("/autenticar")
+	public void autenticar(Usuario usuario) {
+		Usuario user = business.autenticar(usuario.getEmail(), usuario.getSenha());
 
-			userSession.setUsuario(user);
+		if (user != null) {
+			userSession.setUser(user);
 
 			result.redirectTo(IndexController.class).index();
-		} catch (Exception e) {
-			e.printStackTrace();
-			result.forwardTo(this).login();
+		} else {
+			result.include("error", "E-mail ou senha incorreta!").redirectTo(this).login();
 		}
 	}
 
-	@Get
-	@Path("/logout")
+	@Get("/logout")
 	public void logout() {
-		userSession.setUsuario(null);
+		userSession.logout();
 		result.redirectTo(this).login();
 	}
 
