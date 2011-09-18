@@ -1,7 +1,10 @@
 package br.com.wbotelhos.unit.controller;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
+
+import java.lang.reflect.Method;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +15,7 @@ import org.mockito.Spy;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.util.test.MockResult;
+import br.com.wbotelhos.annotation.Public;
 import br.com.wbotelhos.business.LoginBusiness;
 import br.com.wbotelhos.component.UserSession;
 import br.com.wbotelhos.controller.LoginController;
@@ -63,6 +67,34 @@ public class LoginControllerTest {
 
 		// then
 		assertTrue("nao deve haver usuario na sessao", userSession.getUser() == null);
+	}
+
+	@Test
+	public void deveriaEstarAnotadoComPermissaoPublicOMetodoLogin() throws SecurityException, NoSuchMethodException {
+		// given
+		Class<? extends LoginController> clazz = controller.getClass();
+		Method method = clazz.getMethod("login");
+
+		// when
+		Public annotation = method.getAnnotation(Public.class);
+
+		// then
+		assertNotNull(annotation);
+		assertTrue(method.isAnnotationPresent(Public.class));
+	}
+
+	@Test
+	public void deveriaEstarAnotadoComPermissaoPublicOMetodoAutenticar() throws SecurityException, NoSuchMethodException {
+		// given
+		Class<? extends LoginController> clazz = controller.getClass();
+		Method method = clazz.getMethod("autenticar", Usuario.class);
+
+		// when
+		Public annotation = method.getAnnotation(Public.class);
+
+		// then
+		assertNotNull(annotation);
+		assertTrue(method.isAnnotationPresent(Public.class));
 	}
 
 }
