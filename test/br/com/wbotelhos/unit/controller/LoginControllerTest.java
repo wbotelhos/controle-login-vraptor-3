@@ -1,5 +1,6 @@
 package br.com.wbotelhos.unit.controller;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
@@ -38,7 +39,12 @@ public class LoginControllerTest {
 
 	@Test
 	public void deveriaLogin() {
+		// given
 		
+		// when
+		controller.login();
+
+		// then
 	}
 
 	@Test
@@ -47,6 +53,25 @@ public class LoginControllerTest {
 		Usuario entity = new Usuario();
 		entity.setEmail("email@email.com");
 		entity.setSenha("senha");
+
+		Mockito.when(business.autenticar(entity.getEmail(), entity.getSenha())).thenReturn(entity);
+
+		// when
+		controller.autenticar(entity);
+
+		// then
+		verify(business).autenticar(entity.getEmail(), entity.getSenha());
+		assertFalse("nao deve haver error", result.included().containsKey("error"));
+	}
+
+	@Test
+	public void deveriaNaoAutenticar() {
+		// given
+		Usuario entity = new Usuario();
+		entity.setEmail("email@email.com");
+		entity.setSenha("senha");
+
+		Mockito.when(business.autenticar(entity.getEmail(), entity.getSenha())).thenReturn(null);
 
 		// when
 		controller.autenticar(entity);
